@@ -3,7 +3,7 @@ import debounce from "debounce";
 
 export default class extends Controller {
   initialize() {
-    this.submit = debounce(this.submit.bind(this), 400);
+    this.submit = debounce(this.submit.bind(this), 0);
   }
 
   submit() {

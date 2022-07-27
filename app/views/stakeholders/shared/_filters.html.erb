@@ -1,6 +1,19 @@
-<div class="hide" data-toggle-filter-target="filterPanel">
-  Party <%= f.select :party, Stakeholder::PARTIES, include_blank: 'All' %><br>
-  Faction <%= f.select :faction, Stakeholder::FACTIONS, include_blank: 'All' %><br>
+<div>
+  <%= f.label :panel_open, style: 'display: inline-block; padding-bottom: 8px;' do %>
+    <%= f.check_box :panel_open %>
+    Filters
+  <% end %>
+  <% if @search.any_filters? %>
+    <span>*</span>
+  <% end %>
 
-  <%= button_to "Clear", "#", class: 'btn btn-white btn-sm', data: { action: 'clear-form#clear'} %>
+  <% if @search.panel_open %>
+    <div  style="background: lightgray; padding:8px;">
+
+      <%= f.collection_check_boxes :party, Stakeholder::PARTIES, :to_s, :to_s %><br>
+      <%= f.collection_check_boxes :faction, Stakeholder::FACTIONS, :to_s, :to_s %><br>
+
+      <%= button_to "Clear", "#", class: 'btn btn-white btn-sm', style: 'margin-top: 8px;', data: { action: 'clear-form#clear'} %>
+    </div>
+  <% end %>
 </div>

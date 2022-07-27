@@ -2,17 +2,21 @@
 
 <%= render partial: 'stakeholders/shared/view_toggle' %>
 
-<%= form_with model: @search, url: report_path, scope: :search, method: :get,
+<%= form_with model: @search, url: report_path, scope: :search, method: :patch,
   data: {
-    controller: 'auto-submit toggle-filter clear-form',
+    turbo_frame:  :results,
+    controller: 'auto-submit clear-form',
     action: "input->auto-submit#submit"
   } do |f| %>
 
   <%= render partial: 'stakeholders/shared/search_bar', locals: { f: f } %>
 
-  <div style="display: flex;" >
-    <%= render partial: 'results', locals: { parties: @parties, factions: @factions } %>
-    <%= render partial: 'stakeholders/shared/filters', locals: { f: f } %>
-  </div>
+  <%= turbo_frame_tag 'results' do %>
+    <div style="display: flex;" >
+      <%= render partial: 'results', locals: { parties: @parties, factions: @factions } %>
+      <%= render partial: 'stakeholders/shared/filters', locals: { f: f } %>
+    </div>
+
+    <% end %>
 
 <% end %>

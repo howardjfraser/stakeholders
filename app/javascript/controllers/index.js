@@ -7,8 +7,5 @@ import { application } from "./application"
 import AutoSubmitController from "./auto-submit-controller"
 application.register("auto-submit", AutoSubmitController)
 
-import ToggleFilterController from "./toggle-filter-controller"
-application.register("toggle-filter", ToggleFilterController)
-
 import ClearFormController from "./clear-form-controller"
 application.register("clear-form", ClearFormController)

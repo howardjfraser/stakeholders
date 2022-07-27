@@ -2,14 +2,12 @@
 
 <%= render partial: 'stakeholders/shared/view_toggle' %>
 
-<%= form_with model: @search, url: filter_path, scope: :search, method: :patch,
+<%= form_with model: @search, url: list_path, scope: :search, method: :patch,
   data: {
     turbo_frame:  :results,
     controller: 'auto-submit clear-form',
     action: "input->auto-submit#submit"
   } do |f| %>
-
-  <%= hidden_field_tag 'redirect_url', stakeholders_url %>
 
   <%= render partial: 'stakeholders/shared/search_bar', locals: { f: f } %>
 

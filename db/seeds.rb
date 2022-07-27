@@ -1,3 +1,4 @@
+User.destroy_all
 Stakeholder.destroy_all
 
 16.times do
@@ -6,3 +7,5 @@ Stakeholder.destroy_all
   faction = Stakeholder::FACTIONS.sample
   Stakeholder.create! name: name, party: party, faction: faction
 end
+
+User.create! name: 'howard'
